@@ -1,0 +1,23 @@
+{
+  "admin": {
+    "loginId": "admin",
+    "password": "admin"
+  },
+  "students": [
+    {
+      "id": 2,
+      "firstName": "Samrat",
+      "lastName": "Waman",
+      "gender": "male",
+      "dob": "08/02/1997",
+      "mobileNo": "7219194061",
+      "hobbies": "acting",
+      "address": "At/Po -Kandali, Tal-Junnar, Dist-Pune",
+      "age": "23",
+      "education": "Graduated",
+      "totalMarks": "100",
+      "obtainedMarks": "90",
+      "percentage": "90"
+    }
+  ]
+}

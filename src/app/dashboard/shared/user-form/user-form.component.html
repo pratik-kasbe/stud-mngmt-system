@@ -1,0 +1,126 @@
+<mat-card>
+  <mat-card-title>
+    {{formTitle}}
+  </mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <table>
+      <tr>
+        <td>
+
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="Placeholder" [(ngModel)]="studentDetails.firstName" name="firstName">
+
+          </mat-form-field>
+
+        </td>
+        <td>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Placeholder" [(ngModel)]="studentDetails.lastName" name="lastName">
+
+          </mat-form-field>
+
+        </td>
+
+        <td>
+
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Address</mat-label>
+            <textarea matInput placeholder="address" [(ngModel)]="studentDetails.address" name="address"></textarea>
+          </mat-form-field>
+        </td>
+      </tr>
+
+
+
+      <tr>
+
+        <td>
+          <mat-form-field appearance="outline">
+            <mat-label>Date Of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="studentDetails.dob" name="dob"
+              (focusout)="calculateAge()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Age</mat-label>
+            <input matInput disabled [(ngModel)]="studentDetails.age" name="age">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Mobile No</mat-label>
+            <input matInput placeholder="mobile No" [(ngModel)]="studentDetails.mobileNo" name="mobileNo">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+
+
+        <td><label class="mr">Gender</label>
+          <mat-radio-group aria-label="Select an option" [(ngModel)]="studentDetails.gender">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+          </mat-radio-group>
+        </td>
+        <td>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Educational Details</mat-label>
+            <mat-select [(ngModel)]="studentDetails.education">
+              <mat-option *ngFor="let education of educationalDetails" [value]="education">
+                {{education}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Hobbies</mat-label>
+            <input matInput placeholder="dancing..." [(ngModel)]="studentDetails.hobbies" name="hobbies">
+          </mat-form-field>
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Total Marks</mat-label>
+            <input matInput placeholder="total marks" [(ngModel)]="studentDetails.totalMarks" name="totalMarks">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Obtained Marks</mat-label>
+            <input matInput placeholder="obtained marks" [(ngModel)]="studentDetails.obtainedMarks"
+              (focusout)="calculatePercentage()" name="obtainedMarks">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label> Percentage</mat-label>
+            <input matInput disabled [(ngModel)]="studentDetails.percentage" name="percentage">
+            <mat-icon matSuffix>%</mat-icon>
+          </mat-form-field>
+        </td>
+      </tr>
+
+
+    </table>
+
+    <div class="alignRight">
+      <button mat-raised-button color="primary" class="mr" (click)="onClickOfSubmit()">{{buttonName}}</button>
+      <button mat-raised-button mat-dialog-close>Cancel</button></div>
+  </mat-card-content>
+</mat-card>
