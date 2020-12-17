@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { UserFormComponent } from '../shared/user-form/user-form.component';
+import * as XLSX from 'xlsx';
 
 
 @Component({
@@ -18,10 +19,31 @@ export class DashboardComponent implements OnInit {
   }
   displayedColumns: string[] = ['srNo', 'firstName', 'lastName', 'gender', 'dob', 'mobileNo', 'hobbies', 'address', 'age', 'education', 'totalMarks', 'obtainedMarks', 'percentage', 'action'];
   dataSource = new MatTableDataSource();
+  fileName = 'ExcelSheet.xlsx';
+  hideActionColumn = false;
+
   constructor(private dashboardService: DashboardService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getStudents();
+
+  }
+
+  exportexcel(): void {
+    this.hideActionColumn = true;
+    /* table id is passed over here */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    type ColInfo = {
+      hiddent?: true
+    }
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
+    this.hideActionColumn = false;
 
   }
   getStudents() {

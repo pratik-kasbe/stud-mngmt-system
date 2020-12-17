@@ -1,4 +1,9 @@
-<div><button mat-raised-button color="primary" (click)="userInfo('')">
+<div>
+  <button mat-raised-button class="mr" (click)="exportexcel()">
+    Export to Excel <mat-icon> get_app</mat-icon>
+  </button>
+
+  <button mat-raised-button color="primary" (click)="userInfo('')">
     Add Student
   </button></div>
 
@@ -7,7 +12,7 @@
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
 </mat-form-field>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" id="excel-table">
 
   <!-- Position Column -->
   <ng-container matColumnDef="srNo">
@@ -82,7 +87,7 @@
       {{element.percentage}}
     </td>
   </ng-container>
-  <ng-container matColumnDef="action">
+  <ng-container matColumnDef="action" *ngIf="!hideActionColumn" !cols>
     <th mat-header-cell *matHeaderCellDef>Action </th>
     <td mat-cell *matCellDef="let element;">
       <button mat-icon-button color="primary" matTooltip="Edit Student"
