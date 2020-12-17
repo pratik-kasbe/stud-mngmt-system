@@ -1,10 +1,14 @@
-mat-card{
+mat-card {
 
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 
 }
 
-.main-div{
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.main-div {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -20,10 +24,12 @@ mat-card{
 .example-full-width {
   width: 100%;
 }
-.mat-raised-button{
+
+.mat-raised-button {
   margin-right: 10px;
 
 }
-.align-right{
+
+.align-right {
   text-align: right;
 }

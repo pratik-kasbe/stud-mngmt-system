@@ -4,6 +4,8 @@
       <mat-icon>menu</mat-icon>
     </button>
     <h1 class="example-app-name">Student Management App</h1>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="warn" (click)="onClickOfLogout()">Logout</button>
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">

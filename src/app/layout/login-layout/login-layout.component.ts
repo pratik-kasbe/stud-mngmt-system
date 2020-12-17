@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -22,28 +22,29 @@ export class LoginLayoutComponent implements OnInit {
   ]);
 
   matcher = new MyErrorStateMatcher();
-  loginId:string;
-  password:string;
-  credentials:any=[];
-  constructor(private loginService:LoginService,private router:Router) { }
+  loginId: string;
+  password: string;
+  credentials: any = [];
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
-    this.loginService.getCredentials().subscribe(res=>{
+    this.loginService.getCredentials().subscribe(res => {
 
-this.credentials=res
+      this.credentials = res
 
 
     })
   }
-  onClickOfLogIn(){
+  onClickOfLogIn() {
 
-if(this.credentials.loginId===this.loginId&&this.credentials.password===this.password){
-  this.router.navigate(["/Dashboard"])
-}
-else{
-  console.log('check credentials');
+    if (this.credentials.loginId === this.loginId && this.credentials.password === this.password) {
+      sessionStorage.setItem('loginFlag', 'true')
+      this.router.navigate(["/Dashboard"])
+    }
+    else {
+      console.log('check credentials');
 
-}
+    }
 
   }
 

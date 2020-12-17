@@ -1,6 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
@@ -27,6 +28,28 @@ export class MainLayoutComponent implements OnInit {
   onClickOfNav(nav) {
     this.flag = true
     this.router.navigate([`/${nav}`]);
+
+  }
+  onClickOfLogout() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Logout!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Thanks!',
+          'Logout Succssfully.',
+          'success'
+        )
+        sessionStorage.setItem('loginFlag', 'false')
+        this.router.navigate(['']);
+      }
+    })
 
   }
 }
