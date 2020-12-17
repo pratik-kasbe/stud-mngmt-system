@@ -18,6 +18,11 @@ export class MainLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
+
+
+    this.router.url === "/Dashboard" ? this.flag = true : '';
   }
   onClickOfNav(nav) {
     this.flag = true
