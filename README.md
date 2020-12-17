@@ -12,6 +12,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Now run the application with `ng serve`
 
 - Now visit to http://localhost:4200/
+- User Id = admin
+- Password = admin
 
 ## Further help
 
